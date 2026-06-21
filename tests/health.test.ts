@@ -1,3 +1,9 @@
+/**
+ * Pruebas unitarias para el endpoint de Salud (Health Check) de ms-alertas
+ * 
+ * @module health
+ */
+
 import { describe, it, expect } from '@jest/globals';
 import request from 'supertest';
 import express from 'express';
