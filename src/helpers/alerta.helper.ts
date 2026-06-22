@@ -1,7 +1,8 @@
-// ==========================================
-// 🧰 HELPER: MS-ALERTAS
-// ==========================================
-
+/**
+ * @fileoverview Helper de utilidades para alertas.
+ * Provee funciones de validación geográfica (bounding box de Chile)
+ * y formateo de distancias para mostrar en el frontend.
+ */
 export class AlertaHelper {
     /**
      * Valida si unas coordenadas [longitud, latitud] caen aproximadamente

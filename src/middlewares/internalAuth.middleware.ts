@@ -1,6 +1,23 @@
+/**
+ * @fileoverview Middleware de autenticación interna para ms-alertas.
+ * Verifica que las peticiones incluyan el token interno de seguridad
+ * (x-internal-token) para comunicación entre microservicios.
+ * Implementa el modelo de seguridad Zero-Trust.
+ */
+
 import { Request, Response, NextFunction } from 'express';
 import { envs } from '../config/envs';
 
+/**
+ * Middleware que valida el token interno de comunicación entre microservicios.
+ *
+ * @description Rechaza peticiones sin el header x-internal-token correcto.
+ * Las rutas /health, /metrics y /api/health están exentas.
+ *
+ * @param req - Objeto Request de Express
+ * @param res - Objeto Response de Express
+ * @param next - Función NextFunction de Express
+ */
 export const internalAuthMiddleware = (req: Request, res: Response, next: NextFunction): void => {
     if (req.path === '/health' || req.path === '/metrics' || req.path === '/api/health') {
         return next();

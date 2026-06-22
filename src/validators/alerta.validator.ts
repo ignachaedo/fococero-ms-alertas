@@ -1,11 +1,16 @@
-// ==========================================
-// 🛡️ VALIDADOR: MS-ALERTAS (ZOD SCHEMAS)
-// ==========================================
+/**
+ * @fileoverview Esquemas Zod para validación de operaciones del módulo de alertas.
+ * Define schemas para creación de alertas y cambios de estado, con validación
+ * de coordenadas GeoJSON y UUIDs.
+ */
 
 import { z } from 'zod';
-import { EstadoAlerta } from '../models/alerta.model'; // Asegúrate de tener este enum
+import { EstadoAlerta } from '../models/alerta.model';
 
-// Esquema para validar la creación de una alerta
+/**
+ * Esquema para validar la creación de una alerta.
+ * Requiere descripción (10-500 caracteres) y ubicación en formato GeoJSON Point.
+ */
 export const crearAlertaSchema = z.object({
     body: z.object({
         descripcion: z
@@ -37,7 +42,10 @@ export const crearAlertaSchema = z.object({
     }),
 });
 
-// Esquema para validar el cambio de estado
+/**
+ * Esquema para validar el cambio de estado de una alerta.
+ * Recibe un UUID por parámetro y un estado válido del enum EstadoAlerta.
+ */
 export const cambiarEstadoSchema = z.object({
     params: z.object({
         id: z
