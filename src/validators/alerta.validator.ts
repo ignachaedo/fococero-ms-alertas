@@ -1,16 +1,11 @@
-/**
- * @fileoverview Esquemas Zod para validación de operaciones del módulo de alertas.
- * Define schemas para creación de alertas y cambios de estado, con validación
- * de coordenadas GeoJSON y UUIDs.
- */
+// ==========================================
+// 🛡️ VALIDADOR: MS-ALERTAS (ZOD SCHEMAS)
+// ==========================================
 
 import { z } from 'zod';
-import { EstadoAlerta } from '../models/alerta.model';
+import { EstadoAlerta } from '../models/alerta.model'; // Asegúrate de tener este enum
 
-/**
- * Esquema para validar la creación de una alerta.
- * Requiere descripción (10-500 caracteres) y ubicación en formato GeoJSON Point.
- */
+// Esquema para validar la creación de una alerta
 export const crearAlertaSchema = z.object({
     body: z.object({
         descripcion: z
@@ -24,12 +19,10 @@ export const crearAlertaSchema = z.object({
                 coordinates: z.tuple([
                     z
                         .number({ message: 'La longitud debe ser un número.' })
-                        .refine((v) => !isNaN(v), { message: 'La longitud no puede ser NaN.' })
                         .min(-180)
                         .max(180, 'Longitud inválida.'),
                     z
                         .number({ message: 'La latitud debe ser un número.' })
-                        .refine((v) => !isNaN(v), { message: 'La latitud no puede ser NaN.' })
                         .min(-90)
                         .max(90, 'Latitud inválida.'),
                 ]),
@@ -42,10 +35,7 @@ export const crearAlertaSchema = z.object({
     }),
 });
 
-/**
- * Esquema para validar el cambio de estado de una alerta.
- * Recibe un UUID por parámetro y un estado válido del enum EstadoAlerta.
- */
+// Esquema para validar el cambio de estado
 export const cambiarEstadoSchema = z.object({
     params: z.object({
         id: z

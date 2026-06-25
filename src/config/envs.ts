@@ -28,7 +28,7 @@ export const envs = {
     // 🖼️ URL del Microservicio de Multimedia
     MULTIMEDIA_SERVICE_URL: env.get('MULTIMEDIA_SERVICE_URL').required().asString(),
 
-    // 🔐 Secreto interno para comunicación entre microservicios
+    // 🔐 Token interno para comunicación entre microservicios
     INTERNAL_SECRET_TOKEN: env.get('INTERNAL_SECRET_TOKEN').required().asString(),
 
     // Firebase Admin SDK
@@ -40,7 +40,5 @@ export const envs = {
         .get('FIREBASE_PRIVATE_KEY')
         .required()
         .asString()
-        .replace(/\\n/g, '\n')
-        .replace(/"/g, '')
-        .trim(), // Asegura que los saltos de línea sean válidos para OpenSSL
+        .replace(/\\n/g, '\n'), // Asegura que los saltos de línea sean válidos para OpenSSL
 };

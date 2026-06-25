@@ -1,8 +1,4 @@
-/**
- * @fileoverview Manejador global de errores para ms-alertas.
- * Centraliza la captura de excepciones, traduce errores de Firebase Auth
- * y PostgreSQL/PostGIS a mensajes legibles, y retorna respuestas estandarizadas.
- */
+// src/middlewares/error.middleware.ts
 
 import { Request, Response, NextFunction } from 'express';
 import { logger } from '../config/logger';
@@ -16,14 +12,6 @@ interface AppError extends Error {
 /**
  * Middleware: Manejador Global de Errores
  * Atrapa cualquier excepción no controlada en controladores o servicios.
- *
- * @description Traduce errores de Firebase (auth/) y PostgreSQL (22P02)
- * a mensajes legibles para el frontend.
- *
- * @param err - Error capturado
- * @param _req - Objeto Request de Express
- * @param res - Objeto Response de Express
- * @param _next - Función NextFunction de Express
  */
 export const errorHandler = (
     err: unknown,

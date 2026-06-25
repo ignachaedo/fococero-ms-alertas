@@ -17,11 +17,6 @@ import { crearAlertaSchema, cambiarEstadoSchema } from '../validators/alerta.val
 const router = Router();
 
 // ============================================================================
-// 🔓 ZONA PÚBLICA: Alertas verificadas que pueden ver los invitados
-// ============================================================================
-router.get('/publicas', AlertaController.obtenerPublicas);
-
-// ============================================================================
 // 🔒 ZONA SEGURA: Todas las rutas de alertas requieren estar autenticado
 // ============================================================================
 router.use(validateFirebaseToken);

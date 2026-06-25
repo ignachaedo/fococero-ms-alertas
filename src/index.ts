@@ -18,7 +18,6 @@ import './config/firebase'; // Inicializa Firebase Admin automáticamente
 import alertasRoutes from './routes/alerta.routes';
 import { errorHandler } from './middlewares/error.middleware';
 import { metricsMiddleware, metricsHandler } from './middlewares/metrics.middleware';
-import { internalAuthMiddleware } from './middlewares/internalAuth.middleware';
 import { logger } from './config/logger';
 
 import { initEurekaClient } from './config/eureka.client.js';
@@ -82,9 +81,6 @@ app.get('/api/health', (req: Request, res: Response) => {
 
 // 📊 Endpoint de métricas Prometheus
 app.get('/metrics', metricsHandler);
-
-// 🔐 Seguridad interna para el resto de las rutas
-app.use(internalAuthMiddleware);
 
 app.use('/', alertasRoutes);
 

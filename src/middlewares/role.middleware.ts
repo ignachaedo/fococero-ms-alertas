@@ -1,6 +1,4 @@
-/**
- * @fileoverview Middleware de autorización basada en roles (RBAC) para ms-alertas.
- */
+// src/middlewares/role.middleware.ts
 
 import { Request, Response, NextFunction } from 'express';
 import { UserRole } from '../models/user.enum';
@@ -8,9 +6,6 @@ import { UserRole } from '../models/user.enum';
 /**
  * Middleware: Autorización Basada en Roles (RBAC)
  * Evalúa si el usuario autenticado tiene los privilegios necesarios.
- *
- * @param allowedRoles - Lista de roles permitidos para la ruta
- * @returns Middleware function de Express
  */
 export const authorizeRole = (allowedRoles: UserRole[]) => {
     return (req: Request, res: Response, next: NextFunction): void => {

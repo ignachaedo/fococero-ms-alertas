@@ -1,8 +1,4 @@
-/**
- * @fileoverview Middleware de autenticación operativa para ms-alertas.
- * Valida la firma criptográfica del token JWT de Firebase mediante Firebase Admin SDK
- * y asigna los datos del usuario autenticado al objeto Request.
- */
+// src/middlewares/auth.middleware.ts
 
 import { Request, Response, NextFunction } from 'express';
 import admin from '../config/firebase';
@@ -10,14 +6,6 @@ import admin from '../config/firebase';
 /**
  * Middleware: Autenticación Operativa (Zero Trust)
  * Valida estrictamente la firma criptográfica del Token JWT mediante Firebase Admin.
- *
- * @description Verifica que el header Authorization contenga un Bearer token válido,
- * lo decodifica con Firebase Admin, y asigna uid, email y rol a req.user.
- * Los errores se delegan al middleware global de errores.
- *
- * @param req - Objeto Request de Express
- * @param res - Objeto Response de Express
- * @param next - Función NextFunction de Express
  */
 export const validateFirebaseToken = async (
     req: Request,
@@ -44,7 +32,7 @@ export const validateFirebaseToken = async (
         req.user = {
             uid: decodedToken.uid,
             email: decodedToken.email ?? '',
-            rol: decodedToken.rol || 'usuario',
+            rol: decodedToken.rol || 'CIUDADANO',
         };
 
         next();

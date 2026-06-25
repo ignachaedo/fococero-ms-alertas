@@ -1,12 +1,9 @@
-/**
- * @fileoverview Clase AppError para errores operativos de ms-alertas.
- * Estandariza las excepciones de la lógica de negocio con código HTTP
- * predecible para que el error.middleware lo procese sin casteos inseguros.
- */
+// src/helpers/appError.ts
 
 /**
- * Error operativo personalizado. Distingue errores de negocio (isOperational = true)
- * de bugs de programación para logging selectivo en el manejador global.
+ * Clase AppError: Estandariza las excepciones de la lógica de negocio.
+ * Garantiza que cualquier error arrojado tenga un código HTTP predecible
+ * para que el error.middleware lo procese sin necesidad de casteos inseguros.
  */
 export class AppError extends Error {
     public readonly statusCode: number;
