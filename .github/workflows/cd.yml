@@ -90,11 +90,11 @@ jobs:
               env:
                   IMAGE_TAG: ${{ github.sha }}
               run: |
-                  kubectl delete deployment -f k8s/deployment.yaml
+
                   sed -i "s|\${IMAGE_TAG}|$IMAGE_TAG|g" k8s/deployment.yaml
-                  kubectl apply -f k8s/deployment.yaml
-                  kubectl apply -f k8s/service.yaml
-                  kubectl apply -f k8s/hpa.yaml
+                  kubectl apply -f k8s/deployment2.yaml
+                  kubectl apply -f k8s/service2.yaml
+                  kubectl apply -f k8s/hpa2.yaml
 
             - name: Verify rollout
               run: |
