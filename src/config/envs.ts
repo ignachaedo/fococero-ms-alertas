@@ -38,4 +38,7 @@ export const envs = {
         .required()
         .asString()
         .replace(/\\n/g, '\n'), // Asegura que los saltos de línea sean válidos para OpenSSL
+
+    // Token secreto para comunicación interna entre microservicios
+    INTERNAL_SECRET_TOKEN: env.get('INTERNAL_SECRET_TOKEN').default('dev-internal-secret').asString(),
 };
