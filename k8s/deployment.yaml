@@ -24,7 +24,7 @@ spec:
     spec:
       containers:
         - name: ms-alertas
-          image: 711147367899.dkr.ecr.us-east-1.amazonaws.com/fococero-ms-alertas:${IMAGE_TAG}
+          image: 486507079259.dkr.ecr.us-east-1.amazonaws.com/fococero-ms-alertas:${IMAGE_TAG}
           imagePullPolicy: Always
           ports:
             - containerPort: 3003
@@ -37,6 +37,8 @@ spec:
               value: "3003"
             - name: DB_NAME
               value: "alertas_db"
+            - name: MULTIMEDIA_SERVICE_URL
+              value: "http://ms-multimedia:3005"
           resources:
             requests:
               cpu: "100m"
